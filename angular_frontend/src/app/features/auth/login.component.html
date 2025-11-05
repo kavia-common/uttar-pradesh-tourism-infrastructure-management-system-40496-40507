@@ -1,0 +1,22 @@
+<div class="login-wrap">
+  <form class="card form" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Sign in</h2>
+    <p class="muted">Use a username like admin, pm, engineer, or auditor to simulate roles.</p>
+
+    <label>
+      <span>Username</span>
+      <input formControlName="username" placeholder="e.g., admin01" />
+    </label>
+
+    <label>
+      <span>Password</span>
+      <input type="password" formControlName="password" placeholder="••••••••" />
+    </label>
+
+    <div class="actions">
+      <button class="btn" [disabled]="submitting || form.invalid" type="submit">
+        {{ submitting ? 'Signing in...' : 'Sign in' }}
+      </button>
+    </div>
+  </form>
+</div>

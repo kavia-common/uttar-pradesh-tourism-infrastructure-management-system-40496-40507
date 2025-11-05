@@ -1,0 +1,11 @@
+<div class="card" style="margin-bottom:16px">
+  <h2 style="margin-bottom:8px">Dashboard</h2>
+  <p class="muted">Overview of key metrics</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+  <div class="card" *ngFor="let c of cards">
+    <div style="font-size:.9rem;color:#374151">{{ c.title }}</div>
+    <div style="font-size:1.8rem;color:#111827;margin-top:6px">{{ c.value }}</div>
+  </div>
+</div>

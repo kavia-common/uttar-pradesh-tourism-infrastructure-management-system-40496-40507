@@ -1,3 +1,35 @@
-<div class="container">
-  <h1>{{ title }}</h1>
+<div class="app-shell" *ngIf="!isAuthRoute; else authOnly">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">UPSTDC</span>
+      <span class="title">{{ title }}</span>
+    </div>
+    <nav class="top-actions">
+      <span class="user" *ngIf="auth.isAuthenticated()">Role: {{ auth.getRole() || 'Guest' }}</span>
+      <button class="btn btn-outline" *ngIf="auth.isAuthenticated()" (click)="logout()">Logout</button>
+    </nav>
+  </header>
+
+  <div class="main">
+    <aside class="sidebar">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Dashboard</a>
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+      <a routerLink="/tenders" routerLinkActive="active">Tenders</a>
+      <a routerLink="/contractors" routerLinkActive="active">Contractors</a>
+      <a routerLink="/funds" routerLinkActive="active">Funds</a>
+      <a routerLink="/milestones" routerLinkActive="active">Milestones</a>
+      <a routerLink="/progress" routerLinkActive="active">Progress (Map)</a>
+      <a routerLink="/inspections" routerLinkActive="active">Inspections</a>
+      <a routerLink="/handover" routerLinkActive="active">Handover</a>
+      <a routerLink="/payments" routerLinkActive="active">Payments</a>
+      <a routerLink="/reports" routerLinkActive="active">Reports</a>
+    </aside>
+    <section class="content">
+      <router-outlet />
+    </section>
+  </div>
 </div>
+
+<ng-template #authOnly>
+  <router-outlet />
+</ng-template>
